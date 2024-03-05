@@ -37,11 +37,108 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+ ## >IMPORT LIBRARIES:
+ ~~~#import libraries
+from google.colab import files
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+~~~
 
+## >READ THE DATA:
+~~~df = pd.read_csv('Churn_Modelling.csv')
+print(df)
+~~~
 
-## OUTPUT:
-SHOW YOUR OUTPUT HERE
+## >CHECK DATA:
+~~~df.head()
+df.tail()
+df.columns
+~~~
+
+## >CHECK THE MISSING DATA:
+~~~print(df.isnull().sum())
+~~~
+
+## >CHECK FOR DUPLICATES:
+~~~df.duplicated()
+~~~
+
+## >ASSIGNING X:
+~~~X = df.iloc[:, :-1].values
+print(X)
+~~~
+
+## >ASSIGNING Y:
+~~~y = df.iloc[:,-1].values
+print(y)
+~~~
+
+## >HANDLING MISSING VALUES:
+~~~df.fillna(df.mean().round(1), inplace=True)
+print(df.isnull().sum())
+~~~
+
+## >CHECK FOR OUTLIERS:
+~~~df.describe()
+~~~
+
+## >DROPPING STRING VALUES DATA FROM DATASET: & CHECKING DATASETS
+##  AFTER DROPPING STRING VALUES DATA FROM DATASET:
+~~~df1 = df.drop(['Surname','Geography','Gender'],axis=1)
+df1.head()
+~~~
+
+## >NORMALIE THE DATASET USING (MinMax Scaler):
+~~~scaler = MinMaxScaler()
+df2 = pd.DataFrame(scaler.fit_transform(df1))
+print(df2)
+~~~
+
+## >SPLIT THE DATASET:
+~~~X = df.iloc[:, :-1].values
+print(X)
+y = df.iloc[:,-1].values
+print(y)
+~~~
+
+## >TRAINING AND TESTING MODEL:
+~~~X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2)
+print(X_train)
+print("Length of X_train:",len(X_train))
+print(X_test)
+print("Length of X_test:",len(X_test))
+~~~
+
+## >OUTPUT:
+## >DATA CHECKING:
+![Screenshot 2024-03-05 193652](https://github.com/Lavanyajoyce/Ex-1-NN/assets/119393929/742baa47-bb4b-4b43-be97-74f99701c5bb)
+
+## >MISSING DATA:
+![Screenshot 2024-03-05 193756](https://github.com/Lavanyajoyce/Ex-1-NN/assets/119393929/2675212d-7eba-4a61-b845-03c18f072699)
+
+## >DUPLICATES IDENTIFICATION:
+![Screenshot 2024-03-05 193854](https://github.com/Lavanyajoyce/Ex-1-NN/assets/119393929/20ac822f-f9cb-4ac3-a6e2-bad33d4df9e6)
+
+## >VALUE OF Y:
+![Screenshot 2024-03-05 193951](https://github.com/Lavanyajoyce/Ex-1-NN/assets/119393929/666d43a7-57ce-4d25-b2e6-f8b2b74b9808)
+
+## >OUTLIERS:
+![Screenshot 2024-03-05 194038](https://github.com/Lavanyajoyce/Ex-1-NN/assets/119393929/87a795d5-5817-411a-9de7-d5a7473dc4a0)
+
+## >CHECKING DATASET AFTER DROPPING STRING VALUES DATA FROM DATASET:
+![Screenshot 2024-03-05 194121](https://github.com/Lavanyajoyce/Ex-1-NN/assets/119393929/8b0fc241-2dc9-4694-8dc0-080653912e5c)
+
+## >NORMALIZE THE DATASET:
+![Screenshot 2024-03-05 194211](https://github.com/Lavanyajoyce/Ex-1-NN/assets/119393929/45324a01-c04b-481f-92e8-9e31f0e939a2)
+
+## >SPLIT THE DATASET:
+![Screenshot 2024-03-05 194251](https://github.com/Lavanyajoyce/Ex-1-NN/assets/119393929/ea12848f-ff84-400d-ab27-d2ba630f4d7f)
+
+## >TRAINING AND TESTING MODEL:
+![Screenshot 2024-03-05 194344](https://github.com/Lavanyajoyce/Ex-1-NN/assets/119393929/a2004fb5-0243-4072-8364-6676333b49ca)
 
 
 ## RESULT:
